@@ -9,5 +9,6 @@
   },
   "devDependencies": {
     "nuxt": "^3.1.0"
-  }
+  },
+  "__npminstall_done": false
 }

@@ -1,0 +1,56 @@
+@media (max-width: 1190px) {
+  header .phone-hide {
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgb(81 87 103 / 16%);
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    width: 11.9rem;
+    top: 5rem;
+  }
+  header .phone-hide li {
+    height: 4rem;
+  }
+  .phone-show-menu {
+    height: 5rem;
+    display: flex !important;
+    align-items: center;
+    color: #1e80ff;
+    font-size: 1.33rem;
+    justify-content: center;
+    padding: 0;
+    width: 5.66rem;
+    order: 100;
+  }
+  .nav-list-more-icon {
+    transform: rotate(0deg);
+  }
+  .nav-list-more-icon-active {
+    transform: rotate(-180deg);
+  }
+}
+@media screen and (max-width: 1350px) {
+  .search-form {
+    width: 180px;
+  }
+}
+@media screen and (max-width: 1190px) and (min-width: 870px) {
+  .search-form {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 760px) {
+  .search-add-ul li {
+    margin-right: 0.5rem;
+  }
+  .logo-img {
+    width: unset !important;
+  }
+  header .nav-list {
+    justify-content: flex-end !important;
+  }
+}

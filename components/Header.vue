@@ -6,7 +6,24 @@
       </NuxtLink>
       <nav class="main-nav">
         <ul class="nav-list">
-          <div class="phone-show-menu isResourceVisible"></div>
+          <div class="phone-show-menu isResourceVisible">
+            首页
+            <svg
+              t="1675069336150"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="2026"
+              width="25"
+              height="25"
+            >
+              <path
+                d="M735.136 405.28 512 636 288.864 405.28Z"
+                p-id="2027"
+              ></path>
+            </svg>
+          </div>
           <li class="main-nav-list">
             <ul class="phone-hide isResourceVisible">
               <li class="nav-item link-item" v-for="item in navList">
@@ -16,12 +33,20 @@
           </li>
           <li>
             <ul class="search-add-ul">
-              <li>
-                <form action="" class="search-form">
+              <li class="search-li">
+                <form
+                  action=""
+                  :class="{
+                    'search-form': true,
+                    'search-form-active': isSearch,
+                  }"
+                >
                   <input
                     type="text"
                     class="search-input"
                     placeholder="探索稀土掘金"
+                    @focus="changeIsSearch(true)"
+                    @focusout="changeIsSearch(false)"
                   />
                   <div class="search-btn">
                     <img
@@ -33,7 +58,13 @@
                 </form>
               </li>
               <li>
-                <div class="add-group">
+                <div
+                  v-show="useWidth.sizeType != 4"
+                  :class="{
+                    'add-group': true,
+                    'add-group-hide': isSearch && useWidth.sizeType == 1,
+                  }"
+                >
                   <button class="add-btn">写文章</button>
                 </div>
               </li>
@@ -54,9 +85,29 @@
   </header>
 </template>
 <script setup>
-const daytimeLogo =
-    "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg",
+const daytimeLogo = ref(""),
   nightTimeLogo = daytimeLogo;
+let useWidth = useWindowWidth();
+let Console = console;
+let isSearch = ref(false);
+function changeIsSearch(state) {
+  console.log(useWidth.value.sizeType);
+  if (useWidth.value.sizeType != 4) {
+    isSearch.value = state;
+  }
+}
+function logoImg() {
+  console.log(useWidth.value.sizeType);
+  if (useWidth.value.sizeType == 4) {
+    daytimeLogo.value =
+      "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg";
+  } else {
+    daytimeLogo.value =
+      "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg";
+  }
+}
+setTimeout(logoImg, 100);
+
 let navList = [
   "首页",
   "沸点",
@@ -70,170 +121,6 @@ let navList = [
 ];
 </script>
 <style scoped>
-header {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: all 0.2s;
-  background: #fff;
-  border-bottom: 1px solid #f1f1f1;
-  z-index: 250;
-  /* transform: translate3d(0, -100%, 0); */
-}
-.header-content {
-  max-width: 1440px;
-  display: flex;
-  width: 100%;
-  margin: auto;
-  height: 5rem;
-}
-
-header .logo {
-  margin-right: 1rem;
-  margin-left: 24px;
-  display: inline-block;
-  height: 22px;
-  width: auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-header .logo-img {
-  display: block;
-  width: 107px;
-  height: 22px;
-}
-header .nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  flex-direction: row-reverse;
-  height: 100%;
-  margin: 0;
-}
-header .main-nav-list {
-  display: flex;
-  height: 100%;
-  order: 99;
-}
-header .phone-hide {
-  display: flex;
-}
-header .nav-item {
-  color: #86909c;
-  padding: 0 1rem;
-  font-size: 1.167rem;
-  margin: 0;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0);
-}
-header .route-active {
-  color: #1e80ff;
-  font-weight: 500;
-}
-header .nav-item:hover {
-  border-bottom: 2px solid #1e80ff;
-  color: #000;
-}
-header .search-add-ul {
-  display: flex;
-  justify-content: flex-start;
-}
-.search-form {
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 4px;
-  position: relative;
-  height: 2.834rem;
-  border: 1px solid #c2c8d1;
-  transition: width 0.2s;
-}
-.search-input {
-  border: none;
-  width: calc(100% - 44px);
-  padding: 0.6rem 0 0.6rem 1rem;
-  box-shadow: none;
-  outline: none;
-  font-size: 1.1rem;
-  color: #8a919f;
-  background-color: transparent;
-  transition: width 0.3s;
-}
-.search-btn {
-  position: relative;
-  left: -2px;
-  width: 44px;
-  height: 30px;
-  background: #f2f3f5;
-  border-radius: 2px;
-}
-.search-icon {
-  display: inline-block;
-  width: 1.33rem;
-  padding: 0 0.8333rem 0 0;
-  cursor: pointer;
-  margin: 7px 15px;
-}
-.add-group {
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  width: 115px;
-  height: 3rem;
-}
-.add-btn {
-  padding: 0 1rem;
-  font-size: 1.167rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  white-space: nowrap;
-  height: 100%;
-  border-radius: 3px;
-  transition: background-color 0.1s linear 0.05s;
-  border: none;
-  background-color: #007fff;
-  color: #fff;
-}
-.add-btn:hover {
-  background-color: #1171ee;
-}
-.avatar-content {
-  margin-right: 2rem;
-}
-.avatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  position: relative;
-}
-/* @media (max-width: 1149px) {
-  header .phone-hide {
-    display: none;
-    background-color: #fff;
-    box-shadow: 0 8px 24px rgb(81 87 103 / 16%);
-    border: 1px solid #ebebeb;
-    border-radius: 4px;
-    font-size: 1.2rem;
-  }
-  .phone-show-menu {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    color: #1e80ff;
-    font-size: 1.33rem;
-    justify-content: center;
-    padding: 0;
-    width: 5.66rem;
-  }
-} */
+@import url(~/assets/style/header/default.css);
+@import url(~/assets/style/header/phone.css);
 </style>

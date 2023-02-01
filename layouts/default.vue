@@ -9,7 +9,7 @@
 </template>
 <script setup>
 const darkMode = useDarkMode();
-console.log(darkMode);
+console.log(darkMode.value);
 </script>
 <style>
 * {

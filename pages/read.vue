@@ -1,5 +1,11 @@
 <template>
-  <div>Read1</div>
+  <div class="main-area">
+    <div class="article-area">
+      <Article></Article>
+      <BookCard></BookCard>
+    </div>
+    <div class="sidebar"></div>
+  </div>
 </template>
 <script setup>
 useHead({
@@ -11,3 +17,20 @@ useHead({
   script: [{ children: "console.log('Hello world')" }],
 });
 </script>
+<style scoped>
+.main-area {
+  display: flex;
+  padding: 0 0 8rem;
+}
+.article-area {
+  width: 820px;
+  background-color: white;
+  border-radius: 4px 4px 0 0;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25rem;
+}
+</style>

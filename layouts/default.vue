@@ -2,7 +2,7 @@
   <div>
     <Header></Header>
     <main>
-      <content><slot></slot></content><right>123</right>
+      <content><slot></slot></content>
     </main>
     <footer></footer>
   </div>
@@ -18,6 +18,7 @@ console.log(darkMode.value);
 }
 html {
   font-size: 12px;
+  background-color: rgb(244, 245, 245);
 }
 li {
   list-style: none;
@@ -25,5 +26,16 @@ li {
 footer {
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
+}
+main {
+  max-width: 1140px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 80px;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>

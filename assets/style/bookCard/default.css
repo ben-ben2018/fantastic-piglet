@@ -1,0 +1,118 @@
+.warp {
+  border-radius: 4px;
+  background-color: var(--bg);
+  padding-left: 2.67rem;
+  padding-right: 2.67rem;
+  box-sizing: border-box;
+}
+.title {
+  color: var(--font-1);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 370px);
+  grid-gap: 16px;
+}
+.book-card-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 370px;
+  border: 1px solid var(--juejin-layer-loading-start);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 16px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.book-card-cover {
+  width: 80px;
+  height: 112px;
+  margin-right: 12px;
+}
+.book-thumb {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--juejin-layer-loading-end);
+  border-radius: 4px;
+}
+.book-thumb .book-thumb-img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.book-card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  max-width: calc(100% - 92px);
+}
+.book-card-top {
+  min-height: 90px;
+}
+.book-card-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--font-1);
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.book-card-vip {
+  vertical-align: middle;
+}
+.book-card-vip {
+  display: inline-block;
+  margin-right: 6px;
+  color: black;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  padding: 0 8px;
+  background: linear-gradient(90deg, #fde8c3, #edd3a7);
+  border-radius: 3px;
+}
+.book-card-price-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.book-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.username {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--font-1);
+  display: flex;
+  align-items: center;
+}
+.author-name .name {
+  max-width: 84px;
+  color: var(--font-1);
+  font-size: 14px;
+  font-weight: 400;
+}
+.book-card-count {
+  color: var(--font-3);
+  font-size: 12px;
+}
+.book-card-price {
+  color: var(--danger-1-normal);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}

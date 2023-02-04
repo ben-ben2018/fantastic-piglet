@@ -57,9 +57,8 @@
                   </div>
                 </form>
               </li>
-              <li>
+              <li v-show="useWidth.sizeType != 4">
                 <div
-                  v-show="useWidth.sizeType != 4"
                   :class="{
                     'add-group': true,
                     'add-group-hide': isSearch && useWidth.sizeType == 1,
@@ -69,6 +68,15 @@
                 </div>
               </li>
               <li>
+                <div class="avatar-content">
+                  <img
+                    src="https://p3-passport.byteimg.com/img/mosaic-legacy/3797/2889309425~100x100.awebp"
+                    alt=""
+                    class="avatar"
+                  />
+                </div>
+              </li>
+              <li v-show="useWidth.sizeType != 4">
                 <div class="avatar-content">
                   <img
                     src="https://p3-passport.byteimg.com/img/mosaic-legacy/3797/2889309425~100x100.awebp"
@@ -88,7 +96,6 @@
 const daytimeLogo = ref(""),
   nightTimeLogo = daytimeLogo;
 let useWidth = useWindowWidth();
-let Console = console;
 let isSearch = ref(false);
 function changeIsSearch(state) {
   console.log(useWidth.value.sizeType);

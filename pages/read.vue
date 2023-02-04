@@ -24,7 +24,7 @@ useHead({
 }
 .article-area {
   width: 820px;
-  background-color: white;
+  background-color: var(--articleBg);
   border-radius: 4px 4px 0 0;
 }
 .sidebar {

@@ -33,4 +33,13 @@ function getSizeType() {
   console.log(useWidth.value);
   return size;
 }
+
+const darkMode = useDarkMode();
+if (process.client) {
+  if (darkMode.value) {
+    document.body.setAttribute("data-theme", "dark");
+  } else {
+    document.body.setAttribute("data-theme", "dark");
+  }
+}
 </script>

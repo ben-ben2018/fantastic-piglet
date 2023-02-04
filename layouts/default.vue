@@ -2,23 +2,23 @@
   <div>
     <Header></Header>
     <main>
-      <content><slot></slot></content>
+      <div><slot></slot></div>
     </main>
     <footer></footer>
   </div>
 </template>
-<script setup>
-const darkMode = useDarkMode();
-console.log(darkMode.value);
-</script>
+<script setup></script>
 <style>
+@import url(~/assets/style/lightColor.css);
 * {
   margin: 0;
   padding: 0;
 }
 html {
   font-size: 12px;
-  background-color: rgb(244, 245, 245);
+}
+body {
+  background-color: var(--htmlBg);
 }
 li {
   list-style: none;

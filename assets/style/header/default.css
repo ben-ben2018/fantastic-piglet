@@ -5,8 +5,8 @@ header {
   left: 0;
   right: 0;
   transition: all 0.2s;
-  background: #fff;
-  border-bottom: 1px solid #f1f1f1;
+  background: var(--bg);
+  border-bottom: 1px solid var(--grayBorderBottom);
   z-index: 250;
   /* transform: translate3d(0, -100%, 0); */
 }
@@ -58,7 +58,7 @@ header .phone-hide {
   display: flex;
 }
 header .nav-item {
-  color: #86909c;
+  color: var(--navColor);
   padding: 0 1rem;
   font-size: 1.167rem;
   margin: 0;
@@ -67,29 +67,29 @@ header .nav-item {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0);
+  /* border: 2px solid var(--navBorder); */
 }
 header .route-active {
-  color: #1e80ff;
+  color: var(--main);
   font-weight: 500;
 }
 header .nav-item:hover {
-  border-bottom: 2px solid #1e80ff;
-  color: #000;
+  border-bottom: 2px solid var(--mainHard1);
+  color: var(--navHoverColor);
 }
 header .search-add-ul {
   display: flex;
   justify-content: flex-start;
 }
 .search-form {
-  background-color: #fff;
+  background-color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
   position: relative;
   height: 2.834rem;
-  border: 1px solid #c2c8d1;
+  border: 1px solid var(--searchFormBorder);
   transition: width 0.2s;
   width: 226px;
 }
@@ -112,7 +112,7 @@ header .search-add-ul {
   left: -2px;
   width: 44px;
   height: 30px;
-  background: #f2f3f5;
+  background: var(--searchBtnBg);
   border-radius: 2px;
 }
 .search-icon {
@@ -146,11 +146,11 @@ header .search-add-ul {
   border-radius: 3px;
   transition: background-color 0.1s linear 0.05s;
   border: none;
-  background-color: #007fff;
-  color: #fff;
+  background-color: var(--mainHard1);
+  color: var(--btnColor);
 }
 .add-btn:hover {
-  background-color: #1171ee;
+  background-color: var(--mainHard2);
 }
 .search-add-ul li {
   margin-right: 1.5rem;

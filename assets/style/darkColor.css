@@ -1,0 +1,13 @@
+:root {
+  --bg: #fff;
+  --grayBorder: #ebebeb;
+  --main: #ff1e31;
+  --mainHard1: #ff002f;
+  --mainHard2: #ee1118;
+  --sd: rgb(81 87 103 / 16%);
+  --grayBorderBottom: #f1f1f1;
+  --navColor: #86909c;
+  --navBorder: rgba(255, 255, 255, 0);
+  --searchFormBorder: #c2c8d1;
+  --searchBtnBg: #f2f3f5;
+}

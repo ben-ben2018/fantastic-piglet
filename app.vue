@@ -37,7 +37,7 @@ function getSizeType() {
 const darkMode = useDarkMode();
 if (process.client) {
   if (darkMode.value) {
-    document.body.setAttribute("data-theme", "dark");
+    document.body.setAttribute("data-theme", "light");
   } else {
     document.body.setAttribute("data-theme", "dark");
   }

@@ -68,7 +68,7 @@
                 </div>
               </li>
               <li>
-                <div class="avatar-content">
+                <div class="avatar-content" @click="changeTheme">
                   <img
                     src="https://p3-passport.byteimg.com/img/mosaic-legacy/3797/2889309425~100x100.awebp"
                     alt=""
@@ -126,6 +126,18 @@ let navList = [
   "APP",
   "插件",
 ];
+
+function changeTheme() {
+  const darkMode = useDarkMode();
+  if (process.client) {
+    let currentTheme = document.body.getAttribute("data-theme");
+    if (currentTheme == "dark") {
+      document.body.setAttribute("data-theme", "light");
+    } else {
+      document.body.setAttribute("data-theme", "dark");
+    }
+  }
+}
 </script>
 <style scoped>
 @import url(~/assets/style/header/default.css);

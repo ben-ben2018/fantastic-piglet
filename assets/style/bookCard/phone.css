@@ -1,0 +1,11 @@
+@media (max-width: 1190px) {
+  .list {
+    grid-template-columns: unset;
+  }
+}
+/* @media screen and (max-width: 1350px) {
+}
+@media screen and (max-width: 1190px) and (min-width: 870px) {
+}
+@media screen and (max-width: 760px) {
+} */

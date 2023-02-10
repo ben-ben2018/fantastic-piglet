@@ -1,0 +1,41 @@
+:root [data-theme="light"] {
+  --bg: #fff;
+  --grayBorder: #ebebeb;
+  --main: #1e80ff;
+  --mainHard1: #007fff;
+  --mainHard2: #1171ee;
+  --sd: rgb(81 87 103 / 16%);
+  --grayBorderBottom: #f1f1f1;
+  --navColor: #86909c;
+  --navBorder: rgba(255, 255, 255, 0);
+  --searchFormBorder: #c2c8d1;
+  --searchBtnBg: #f2f3f5;
+  --btnColor: #fff;
+  --htmlBg: rgb(244, 245, 245);
+  --navHoverColor: #000;
+  --articleBg: #fff;
+  --font-1: #000;
+  --font-3: rgb(52, 56, 60);
+  --danger-1-normal: red;
+}
+
+:root [data-theme="dark"] {
+  --bg: rgb(46, 46, 46);
+  --grayBorder: #555555;
+  --main: rgb(19, 82, 163);
+  --mainHard1: rgb(19, 82, 163);
+  --mainHard2: rgb(19, 82, 163);
+  --sd: rgb(81 87 103 / 16%);
+  --grayBorderBottom: #616060;
+  --navColor: #86909c;
+  --navBorder: rgba(255, 255, 255, 0);
+  --searchFormBorder: #c2c8d1;
+  --searchBtnBg: #f2f3f5;
+  --btnColor: rgb(188, 187, 187);
+  --htmlBg: rgb(36, 36, 41);
+  --navHoverColor: #fff;
+  --articleBg: rgb(52, 56, 60);
+  --font-1: white;
+  --font-3: #c2c8d1;
+  --danger-1-normal: rgb(192, 6, 6);
+}

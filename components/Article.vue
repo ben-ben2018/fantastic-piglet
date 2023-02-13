@@ -1,22 +1,21 @@
 <template>
   <div class="article">
-    <h1 class="article-title">666</h1>
+    <h1 class="article-title">{{ article.article.title }}</h1>
     <div class="author-info-block">
       <img src="" alt="" class="avatar" />
       <div class="author-info-box">
         <div class="author-name">
-          <span class="name" style="max-width: 128px"> zhoulx </span>
+          <span class="name" style="max-width: 128px">
+            {{ article.author.name }}
+          </span>
         </div>
         <div class="meta-box">
-          <time
-            datetime="2023-01-31T02:51:05.000Z"
-            title="Tue Jan 31 2023 10:51:05 GMT+0800 (China Standard Time)"
-            class="time"
-          >
-            2023年01月31日 10:51
+          <time :datetime="article.article.time" class="time">
+            {{ article.article.time }}
           </time>
-          <span class="views-count"> ·&nbsp;&nbsp;阅读 450 </span>
-          <!---->
+          <span class="views-count">
+            ·&nbsp;&nbsp;阅读 {{ article.article.views }}
+          </span>
         </div>
       </div>
     </div>
@@ -29,32 +28,16 @@
     <div class="tag-list-box">
       <div class="tag-list">
         <div class="tag-list-title">分类：</div>
-        <a href="/frontend" target="_blank" rel="" class="item category-item"
-          ><span class="tag-title">前端</span></a
-        >
+        <NuxtLink class="item category-item">
+          <span class="tag-title">{{ article.tag.type.name }}</span>
+        </NuxtLink>
       </div>
       <div class="tag-list">
         <div class="tag-list-title">标签：</div>
         <div class="tag-list-container">
-          <a
-            href="/tag/%E5%89%8D%E7%AB%AF"
-            target="_blank"
-            rel=""
-            class="item tag-item"
-            ><span class="tag-title">前端</span></a
-          ><a
-            href="/tag/JavaScript"
-            target="_blank"
-            rel=""
-            class="item tag-item"
-            ><span class="tag-title">JavaScript</span></a
-          ><a
-            href="/tag/TypeScript"
-            target="_blank"
-            rel=""
-            class="item tag-item"
-            ><span class="tag-title">TypeScript</span></a
-          >
+          <NuxtLink class="item tag-item" v-for="item in article.tag.tags">
+            <span class="tag-title">{{ item.name }}</span>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -63,6 +46,16 @@
 <script setup>
 import MarkdownIt from "markdown-it";
 let md = new MarkdownIt();
+let article = {
+  author: { name: "", avatar: "" },
+  tag: { type: { name: "", url: "" }, tags: [{ name: "", url: "" }] },
+  article: {
+    md: "",
+    title: "",
+    views: 700,
+    time: "",
+  },
+};
 let testMd = `# qqrobot
 ## 基于go-cqhttp的qq机器人
 

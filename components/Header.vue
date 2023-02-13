@@ -17,6 +17,7 @@
               p-id="2026"
               width="25"
               height="25"
+              :fill="iconColor"
             >
               <path
                 d="M735.136 405.28 512 636 288.864 405.28Z"
@@ -126,7 +127,7 @@ let navList = [
   "APP",
   "插件",
 ];
-
+let iconColor = ref("black");
 function changeTheme() {
   const darkMode = useDarkMode();
   if (process.client) {
@@ -135,6 +136,7 @@ function changeTheme() {
       document.body.setAttribute("data-theme", "light");
     } else {
       document.body.setAttribute("data-theme", "dark");
+      iconColor.value = "white";
     }
   }
 }

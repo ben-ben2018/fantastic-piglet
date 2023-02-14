@@ -1,4 +1,10 @@
-@media (max-width: 1190px) {
+@media screen and (max-width: 1350px) and (min-width: 1190px) {
+  .search-form {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 1190px) and (min-width: 1000px) {
   header .phone-hide {
     background-color: var(--bg);
     box-shadow: 0 8px 24px rgb(81 87 103 / 16%);
@@ -36,19 +42,11 @@
     transform: rotate(-180deg);
   }
 }
-
-@media screen and (max-width: 1350px) {
-  .search-form {
-    width: 180px;
-  }
-}
-
-@media screen and (max-width: 1190px) and (min-width: 870px) {
+@media screen and (max-width: 1000px) and (min-width: 760px) {
   .search-form {
     width: 300px;
   }
 }
-
 @media screen and (max-width: 760px) {
   .search-add-ul li {
     margin-right: 0.5rem;

@@ -2,11 +2,11 @@
   <header>
     <div class="header-content">
       <NuxtLink href="" class="logo">
-        <img :src="daytimeLogo" class="logo-img" />
+        <img :src="daytimeLogo" class="logo-img" />{{ useWidth.sizeType }}
       </NuxtLink>
       <nav class="main-nav">
         <ul class="nav-list">
-          <div class="phone-show-menu isResourceVisible">
+          <div class="phone-show-menu isResourceVisible" @click="showNav">
             首页
             <svg
               t="1675069336150"
@@ -17,7 +17,6 @@
               p-id="2026"
               width="25"
               height="25"
-              :fill="iconColor"
             >
               <path
                 d="M735.136 405.28 512 636 288.864 405.28Z"
@@ -26,8 +25,15 @@
             </svg>
           </div>
           <li class="main-nav-list">
-            <ul class="phone-hide isResourceVisible">
-              <li class="nav-item link-item" v-for="item in navList">
+            <ul
+              class="phone-hide isResourceVisible"
+              v-show="navShowState || useWidth.sizeType <= 1"
+            >
+              <li
+                class="nav-item link-item"
+                v-for="item in navList"
+                :key="item"
+              >
                 {{ item }}
               </li>
             </ul>
@@ -128,6 +134,12 @@ let navList = [
   "插件",
 ];
 let iconColor = ref("black");
+
+let navShowState = ref(false);
+function showNav() {
+  navShowState.value = !navShowState.value;
+}
+
 function changeTheme() {
   const darkMode = useDarkMode();
   if (process.client) {

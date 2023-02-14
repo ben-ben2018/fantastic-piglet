@@ -1,5 +1,9 @@
 <template>
-  <div>Home1</div>
+  <div>
+    <Tags></Tags>
+    <Sort></Sort>
+    <EntryList></EntryList>
+  </div>
 </template>
 <script>
 export default {

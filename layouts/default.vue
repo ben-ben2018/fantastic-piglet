@@ -28,7 +28,6 @@ footer {
   padding-bottom: env(safe-area-inset-bottom);
 }
 main {
-  max-width: 1140px;
   position: relative;
   margin: 0 auto;
   width: 100%;

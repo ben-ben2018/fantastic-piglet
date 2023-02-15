@@ -146,8 +146,10 @@ function changeTheme() {
     let currentTheme = document.body.getAttribute("data-theme");
     if (currentTheme == "dark") {
       document.body.setAttribute("data-theme", "light");
+      localStorage.setItem("useDark", "");
     } else {
       document.body.setAttribute("data-theme", "dark");
+      localStorage.setItem("useDark", "1");
       iconColor.value = "white";
     }
   }

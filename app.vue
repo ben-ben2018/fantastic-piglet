@@ -35,11 +35,21 @@ function getSizeType() {
 }
 
 const darkMode = useDarkMode();
+
 if (process.client) {
-  if (darkMode.value) {
-    document.body.setAttribute("data-theme", "light");
-  } else {
+  setInterval(() => {
+    console.log(
+      (darkMode.value && darkMode.value == "true") ||
+        localStorage.getItem("useDark")
+    );
+  }, 1000);
+  if (
+    (darkMode.value && darkMode.value == "true") ||
+    localStorage.getItem("useDark")
+  ) {
     document.body.setAttribute("data-theme", "dark");
+  } else {
+    document.body.setAttribute("data-theme", "light");
   }
 }
 </script>

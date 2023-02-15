@@ -6,7 +6,7 @@
       <EntryList></EntryList>
     </div>
     <div class="main-right">
-      <div class="right-card">cece</div>
+      <div class="right-card"></div>
     </div>
   </div>
 </template>

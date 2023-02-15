@@ -6,7 +6,9 @@
       <EntryList></EntryList>
     </div>
     <div class="main-right">
-      <div class="right-card"></div>
+      <div class="right-card">
+        <Tick></Tick>
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +18,7 @@ export default {
 };
 </script>
 <style scoped>
+@import url("~/assets/style/indexS/phone.css");
 .main {
   width: 1000px;
   margin: 0 auto;

@@ -1,0 +1,19 @@
+@media screen and (max-width: 1000px) {
+  .right-card {
+    display: none;
+  }
+  .main-left,
+  .main {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1190px) {
+}
+
+@media screen and (max-width: 1190px) and (min-width: 1000px) {
+}
+@media screen and (max-width: 1000px) and (min-width: 760px) {
+}
+@media screen and (max-width: 760px) {
+}

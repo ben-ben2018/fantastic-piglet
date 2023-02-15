@@ -21,6 +21,8 @@
               <path
                 d="M735.136 405.28 512 636 288.864 405.28Z"
                 p-id="2027"
+                class="icon"
+                fill="iconColor"
               ></path>
             </svg>
           </div>
@@ -101,7 +103,7 @@
 </template>
 <script setup>
 const daytimeLogo = ref(""),
-  nightTimeLogo = daytimeLogo;
+  nightTimeLogo = "./jjDark.svg";
 let useWidth = useWindowWidth();
 let isSearch = ref(false);
 function changeIsSearch(state) {
@@ -116,8 +118,14 @@ function logoImg() {
     daytimeLogo.value =
       "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg";
   } else {
-    daytimeLogo.value =
-      "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg";
+    const darkMode = useDarkMode();
+    if (
+      (darkMode.value && darkMode.value == "true") ||
+      localStorage.getItem("useDark")
+    ) {
+      
+    }
+    
   }
 }
 setTimeout(logoImg, 100);
@@ -133,7 +141,6 @@ let navList = [
   "APP",
   "插件",
 ];
-let iconColor = ref("black");
 
 let navShowState = ref(false);
 function showNav() {
@@ -141,7 +148,6 @@ function showNav() {
 }
 
 function changeTheme() {
-  const darkMode = useDarkMode();
   if (process.client) {
     let currentTheme = document.body.getAttribute("data-theme");
     if (currentTheme == "dark") {
@@ -150,7 +156,6 @@ function changeTheme() {
     } else {
       document.body.setAttribute("data-theme", "dark");
       localStorage.setItem("useDark", "1");
-      iconColor.value = "white";
     }
   }
 }

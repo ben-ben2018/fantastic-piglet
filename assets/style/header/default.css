@@ -81,6 +81,11 @@ header .search-add-ul {
   display: flex;
   justify-content: flex-start;
 }
+
+.icon {
+  fill: var(--font-3);
+}
+
 .search-form {
   background-color: var(--bg);
   display: flex;

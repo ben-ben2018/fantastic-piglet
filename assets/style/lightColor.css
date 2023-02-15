@@ -22,7 +22,7 @@
 :root [data-theme="dark"] {
   --bg: rgb(46, 46, 46);
   --grayBorder: #555555;
-  --main: rgb(19, 82, 163);
+  --main: rgb(35, 105, 198);
   --mainHard1: rgb(19, 82, 163);
   --mainHard2: rgb(19, 82, 163);
   --sd: rgb(81 87 103 / 16%);

@@ -37,12 +37,6 @@ function getSizeType() {
 const darkMode = useDarkMode();
 
 if (process.client) {
-  setInterval(() => {
-    console.log(
-      (darkMode.value && darkMode.value == "true") ||
-        localStorage.getItem("useDark")
-    );
-  }, 1000);
   if (
     (darkMode.value && darkMode.value == "true") ||
     localStorage.getItem("useDark")

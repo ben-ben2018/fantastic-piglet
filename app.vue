@@ -30,7 +30,6 @@ function getSizeType() {
     size = 0;
   }
   useWidth.value.sizeType = size;
-  console.log(useWidth.value);
   return size;
 }
 

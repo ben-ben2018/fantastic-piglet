@@ -22,7 +22,6 @@
                 d="M735.136 405.28 512 636 288.864 405.28Z"
                 p-id="2027"
                 class="icon"
-                fill="iconColor"
               ></path>
             </svg>
           </div>
@@ -123,9 +122,10 @@ function logoImg() {
       (darkMode.value && darkMode.value == "true") ||
       localStorage.getItem("useDark")
     ) {
-      
+      daytimeLogo.value = "../jjDark.svg";
+    } else {
+      daytimeLogo.value = "../jjLight.svg";
     }
-    
   }
 }
 setTimeout(logoImg, 100);
@@ -153,9 +153,11 @@ function changeTheme() {
     if (currentTheme == "dark") {
       document.body.setAttribute("data-theme", "light");
       localStorage.setItem("useDark", "");
+      daytimeLogo.value = "../jjLight.svg";
     } else {
       document.body.setAttribute("data-theme", "dark");
       localStorage.setItem("useDark", "1");
+      daytimeLogo.value = "../jjDark.svg";
     }
   }
 }

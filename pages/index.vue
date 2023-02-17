@@ -8,6 +8,8 @@
     <div class="main-right">
       <div class="right-card">
         <Tick></Tick>
+        <AD></AD>
+        <AuthorList></AuthorList>
       </div>
     </div>
   </div>
@@ -35,6 +37,9 @@ export default {
 }
 .right-card {
   width: 100%;
-  background-color: var(--bg);
+}
+
+.right-card > * {
+  margin-bottom: 20px;
 }
 </style>

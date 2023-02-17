@@ -1,10 +1,14 @@
 <template>
   <div class="main-area">
     <div class="article-area">
-      <Article></Article>
-      <BookCard></BookCard>
+      <div class="article-main">
+        <Article></Article>
+        <BookCard></BookCard>
+      </div>
+      <div class="sidebar">
+        <User></User>
+      </div>
     </div>
-    <div class="sidebar"></div>
   </div>
 </template>
 <script setup>
@@ -20,17 +24,21 @@ useHead({
 <style scoped>
 .main-area {
   display: flex;
-  padding: 0 0 8rem;
 }
 .article-area {
-  width: 820px;
-  background-color: var(--articleBg);
+  width: 1000px;
   border-radius: 4px 4px 0 0;
+  margin: 0 auto 99px;
+  position: relative;
+}
+.article-main {
+  background-color: var(--bg);
+  width: 75%;
 }
 .sidebar {
-  position: absolute;
-  top: 0;
+  width: 23%;
   right: 0;
-  width: 25rem;
+  top: 0;
+  position: absolute;
 }
 </style>

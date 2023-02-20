@@ -1,3 +1,7 @@
+.active {
+  background-color: var(--main);
+  color: white !important;
+}
 .tagNav {
   width: 100%;
   background-color: var(--bg);

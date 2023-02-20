@@ -2,18 +2,35 @@ import { axios2 } from "../useAxios2";
 export default defineEventHandler(async (event) => {
   // path: "/api/" + event.context.params.hello,
   //   let query = event.context.params.getRead
-  let type = "";
+  const getQuery = (url: String) => {
+    const str = url.substr(url.indexOf("?") + 1);
+    const arr = str.split("&");
+    const result: any = {};
+    for (let i = 0; i < arr.length; i++) {
+      const item = arr[i].split("=");
+      result[item[0]] = item[1];
+    }
+    return result;
+  };
 
+  let type = "";
+  let query = getQuery(event.node.req.originalUrl);
   if (event.context.params.getList != "getList") {
-    type =
-      "filters[tag][name][$eq]=" +
-      decodeURI(event.context.params.getList.split("/").pop());
+    type = decodeURI(
+      event.context.params.getList.split("/").pop().split("?")[0]
+    );
   }
+  // console.log(event);
   let result: Object = {};
-  await axios2
-    .find("jj-contents/", "&sort[0]=hot:desc" + (type ? "&" + type : ""))
-    .then((res) => {
-      result = res.data.data;
-    });
+  let path =
+    "&sort[0]=hot:desc&pagination[pageSize]=10&" +
+    "pagination[page]=" +
+    (query.page || 1) +
+    (type ? "&filters[tag][name][$eq]=" + type : "");
+
+  console.log(path);
+  await axios2.find("jj-contents/", path).then((res) => {
+    result = res.data.data;
+  });
   return result;
 });

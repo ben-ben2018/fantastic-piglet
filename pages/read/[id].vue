@@ -15,20 +15,23 @@
 <script setup>
 // import { debounce } from "~/assets/js/tool";
 const route = useRoute();
-const { data } = await useFetch("/api/getRead/" + route.params.id);
+const { data } = await useFetch(
+  "/api/getRead/?id=" + route.path.split("/").pop()
+);
 let attributes = data.value;
-useHead({
-  title: attributes.title,
-  meta: [{ name: "description", content: attributes.title }],
-  bodyAttrs: {
-    class: "test",
-  },
-  script: [
-    {
-      children: ``,
-    },
-  ],
-});
+// console.log(attributes);
+// useHead({
+//   title: attributes.title,
+//   meta: [{ name: "description", content: attributes.title }],
+//   bodyAttrs: {
+//     class: "test",
+//   },
+//   script: [
+//     {
+//       children: ``,
+//     },
+//   ],
+// });
 let contents = ref([]);
 let hs = reactive([]);
 let scrollTop = 0;

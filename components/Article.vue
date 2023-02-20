@@ -69,6 +69,7 @@ let article = {
     time: info.updatedAt,
   },
 };
+// console.log(info);
 md.core.ruler.push("show-line", (state) => {
   // forEach 遍历 tokens
   state.tokens.forEach((token) => {

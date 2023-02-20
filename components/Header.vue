@@ -30,9 +30,13 @@
               class="phone-hide isResourceVisible"
               v-show="navShowState && useWidth.sizeType <= 1"
             >
-              <NuxtLink v-for="item in navList" :key="item.name" :to="item.url">
+              <NuxtLink
+                v-for="item in navList"
+                :key="item.attributes.name"
+                :to="item.attributes.url"
+              >
                 <li class="nav-item link-item">
-                  {{ item.name }}
+                  {{ item.attributes.name }}
                 </li></NuxtLink
               >
             </ul>
@@ -129,9 +133,9 @@ function logoImg() {
 setTimeout(logoImg, 100);
 
 const { data } = await useFetch("/api/getNav");
-let navList = data.value.attributes.nav;
-
-let navShowState = ref(useWidth.sizeType <= 1 ? true : false);
+let navList = data.value;
+// console.log(data.value);
+let navShowState = ref(useWidth.value.sizeType < 1 ? true : false);
 function showNav() {
   navShowState.value = !navShowState.value;
 }

@@ -2,7 +2,7 @@
   <div class="main">
     <div class="main-left">
       <Tags @loadRead="loadRead"></Tags>
-      <Sort></Sort>
+      <Sort @loadSort="loadSort"></Sort>
       <EntryList :entryList="entryList || []"></EntryList>
     </div>
     <div class="main-right">
@@ -16,13 +16,52 @@
 </template>
 
 <script setup>
-let entryList = ref({});
-async function loadRead(tag) {
-  const { data } = await useFetch("/api/getList" + tag);
-  entryList.value = data.value;
-  console.log(entryList.value);
+let entryList = ref([]);
+let loading = false,
+  nowTag = "/综合",
+  nowSort = "hot",
+  nowPage = 1,
+  temp = [];
+async function loadRead(tag, page, sort, clear) {
+  if (clear) {
+    nowPage = 1;
+    entryList.value = [];
+  }
+  return new Promise(async (resolve, reject) => {
+    tag == "/综合" ? (tag = "") : null;
+    let path = `/api/getList${tag}?page=${page ? page : nowPage}&sort=${
+      sort ? sort : nowSort
+    }`;
+    nowTag = tag;
+    nowSort = sort;
+    const { data } = await useFetch(path);
+    if (String(temp) == String(data.value)) {
+      temp = data.value;
+      nowPage--;
+    } else {
+      entryList.value.push(...data.value);
+    }
+    resolve(...data.value);
+  });
 }
-loadRead("");
+loadRead("/综合");
+if (process.client && window) {
+  window.onscroll = function () {
+    if (loading) {
+      return;
+    }
+    let documentE = document.documentElement;
+    let windowHeight = documentE.clientHeight || document.body.clientHeight;
+    let documentHeight = documentE.scrollHeight || document.body.scrollHeight;
+    let scrollTop = documentE.scrollTop || document.body.scrollTop;
+    if (windowHeight + scrollTop + 2 >= documentHeight) {
+      loading = true;
+      loadRead(nowTag, ++nowPage, false).then(() => {
+        loading = false;
+      });
+    }
+  };
+}
 </script>
 
 <style scoped>

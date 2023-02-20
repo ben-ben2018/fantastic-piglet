@@ -1,13 +1,18 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a v-for="tag in tags" class="tag">{{ tag }}</a>
+      <a class="tag" @click="useSort('new')">最新</a>
+      <a class="tag" @click="useSort('hot')">最热</a>
     </div>
   </div>
 </template>
 
 <script setup>
-let tags = ["推荐", "最新", "热榜"];
+let loadEmit = defineEmits(["loadSort"]);
+function useSort(tag) {
+  nowTag.value = tag;
+  loadEmit("loadSort", "/" + tag, 1, true);
+}
 </script>
 
 <style scoped>

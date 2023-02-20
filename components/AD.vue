@@ -33,6 +33,7 @@ img {
 </style>
 
 <script setup>
-let adSrc =
-  "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/513e1d89a09b4a0ebab67c6a1dc94901~tplv-k3u1fbpfcp-no-mark:480:400:0:0.awebp?";
+const { data } = await useFetch("/api/getAD");
+console.log(data.value);
+let adSrc = data.value.attributes.imgUrl;
 </script>

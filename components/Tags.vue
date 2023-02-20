@@ -1,25 +1,16 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a v-for="tag in tags" class="tag">{{ tag }}</a>
+      <a v-for="tag in tags" class="tag">{{ tag.attributes.name }}</a>
     </div>
     <div class="setting">管理</div>
   </div>
 </template>
 
 <script setup>
-let tags = [
-  "综合",
-  "关注",
-  "后端",
-  "前端",
-  "Android",
-  "iOS",
-  "人工智能",
-  "开发工具",
-  "代码人生",
-  "阅读",
-];
+const { data } = await useFetch("/api/getTypes");
+console.log(data.value);
+let tags = data.value;
 </script>
 
 <style scoped>

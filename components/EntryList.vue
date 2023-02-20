@@ -12,7 +12,7 @@
           <div class="info">
             <div class="title">{{ entry.attributes.title }}</div>
             <div class="content-box">
-              <div class="content">{{ entry.attributes.content }}</div>
+              <div class="content">{{ entry.attributes.summary }}</div>
             </div>
             <div>
               {{ entry.attributes.like }} {{ entry.attributes.message }}

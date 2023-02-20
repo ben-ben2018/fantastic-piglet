@@ -34,6 +34,5 @@ img {
 
 <script setup>
 const { data } = await useFetch("/api/getAD");
-console.log(data.value);
 let adSrc = data.value.attributes.imgUrl;
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div class="main">
     <div class="main-left">
-      <Tags></Tags>
+      <Tags @loadRead="loadRead"></Tags>
       <Sort></Sort>
-      <EntryList :entryList="data"></EntryList>
+      <EntryList :entryList="entryList || []"></EntryList>
     </div>
     <div class="main-right">
       <div class="right-card">
@@ -16,7 +16,13 @@
 </template>
 
 <script setup>
-const { data } = await useFetch("/api/getList");
+let entryList = ref({});
+async function loadRead(tag) {
+  const { data } = await useFetch("/api/getList" + tag);
+  entryList.value = data.value;
+  console.log(entryList.value);
+}
+loadRead("");
 </script>
 
 <style scoped>

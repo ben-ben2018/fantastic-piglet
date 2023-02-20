@@ -1,7 +1,9 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a v-for="tag in tags" class="tag">{{ tag.attributes.name }}</a>
+      <a v-for="tag in tags" class="tag" @click="useTag(tag.attributes.name)">{{
+        tag.attributes.name
+      }}</a>
     </div>
     <div class="setting">管理</div>
   </div>
@@ -9,8 +11,11 @@
 
 <script setup>
 const { data } = await useFetch("/api/getTypes");
-console.log(data.value);
 let tags = data.value;
+let loadEmit = defineEmits(["loadRead"]);
+function useTag(tag) {
+  loadEmit("loadRead", "/" + tag);
+}
 </script>
 
 <style scoped>

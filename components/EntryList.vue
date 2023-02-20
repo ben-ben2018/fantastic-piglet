@@ -1,6 +1,6 @@
 <template>
   <div class="entry-list">
-    <div class="entry" v-for="entry in entrys" :key="entry.attributes.title">
+    <div class="entry" v-for="entry in entryList" :key="entry.attributes.title">
       <NuxtLink :to="'/read/' + entry.id">
         <div class="meta-container">
           <span class="meta">{{
@@ -35,7 +35,7 @@
 const props = defineProps({
   entryList: Array,
 });
-let entrys = [...props.entryList];
+// let entrys = [...(props.entryList || [])];
 console.log(props.entryList);
 </script>
 <style scoped>

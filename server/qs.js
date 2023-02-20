@@ -1,7 +1,6 @@
 function stringify(obj) {
     let last = ""
     for (let key in obj) {
-        console.log(obj[key])
         if (typeof obj[key] == 'object') {
             let temp = stringify(obj[key])
             if (temp) {

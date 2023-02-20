@@ -130,7 +130,6 @@ setTimeout(logoImg, 100);
 
 const { data } = await useFetch("/api/getNav");
 let navList = data.value.attributes.nav;
-console.log(data.value);
 
 let navShowState = ref(useWidth.sizeType <= 1 ? true : false);
 function showNav() {

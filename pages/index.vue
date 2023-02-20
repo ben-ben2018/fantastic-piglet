@@ -3,7 +3,7 @@
     <div class="main-left">
       <Tags></Tags>
       <Sort></Sort>
-      <EntryList></EntryList>
+      <EntryList :entryList="data"></EntryList>
     </div>
     <div class="main-right">
       <div class="right-card">
@@ -14,11 +14,11 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  layout: "default",
-};
+
+<script setup>
+const { data } = await useFetch("/api/getList");
 </script>
+
 <style scoped>
 @import url("~/assets/style/indexS/phone.css");
 .main {

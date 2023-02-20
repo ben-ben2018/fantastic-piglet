@@ -2,7 +2,7 @@
   <div class="main-area">
     <div class="article-area">
       <div class="article-main">
-        <Article></Article>
+        <Article :attributes="attributes"></Article>
         <BookCard></BookCard>
       </div>
       <div class="sidebar">
@@ -12,9 +12,13 @@
   </div>
 </template>
 <script setup>
+const route = useRoute();
+const { data } = await useFetch("/api/getRead/" + route.params.id);
+let attributes = data.value;
+console.log(attributes);
 useHead({
-  title: "My App",
-  meta: [{ name: "description", content: "My amazing site." }],
+  title: attributes.title,
+  meta: [{ name: "description", content: attributes.title }],
   bodyAttrs: {
     class: "test",
   },

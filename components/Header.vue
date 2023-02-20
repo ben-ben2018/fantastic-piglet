@@ -28,7 +28,7 @@
           <li class="main-nav-list">
             <ul
               class="phone-hide isResourceVisible"
-              v-show="navShowState || useWidth.sizeType <= 1"
+              v-show="navShowState && useWidth.sizeType <= 1"
             >
               <li
                 class="nav-item link-item"
@@ -106,13 +106,13 @@ const daytimeLogo = ref(""),
 let useWidth = useWindowWidth();
 let isSearch = ref(false);
 function changeIsSearch(state) {
-  console.log(useWidth.value.sizeType);
+  // console.log(useWidth.value.sizeType);
   if (useWidth.value.sizeType != 4) {
     isSearch.value = state;
   }
 }
 function logoImg() {
-  console.log(useWidth.value.sizeType);
+  // console.log(useWidth.value.sizeType);
   if (useWidth.value.sizeType == 4) {
     daytimeLogo.value =
       "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg";

@@ -77,15 +77,21 @@ md.core.ruler.push("show-line", (state) => {
     let h1Num = 0;
     if (token.tag == "h1") {
       token.attrs = token.attrs || [];
-      token.attrs.push(["data-h1", h1Num++]);
+      token.attrs.push(["data-h1", h1Num]);
+      token.attrs.push(["id", "h" + h1Num]);
+      h1Num++;
+      // content().value.push()
     }
-    if (token.map) {
-      token.attrs = token.attrs || [];
-      token.attrs.push([]);
-    }
+    // if (token.map) {
+    //   token.attrs = token.attrs || [];
+    //   token.attrs.push([]);
+    // }
   });
   return true;
 });
+function loadTheme(theme) {
+  instyle.value = themeList[theme];
+}
 let markdown = article.article.md;
 if (markdown) {
   let theme = markdown.match(/\<\!\-\-(.*?)\-\-\>/);
@@ -95,10 +101,9 @@ if (markdown) {
   }
 }
 
-function loadTheme(theme) {
-  instyle.value = themeList[theme];
-}
 let result = md.render(markdown);
+let loadEmit = defineEmits(["loaded"]);
+loadEmit("loaded", "");
 </script>
 <style scoped>
 @import url(~/assets/style/Article/default.css);

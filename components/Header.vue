@@ -30,13 +30,11 @@
               class="phone-hide isResourceVisible"
               v-show="navShowState && useWidth.sizeType <= 1"
             >
-              <li
-                class="nav-item link-item"
-                v-for="item in navList"
-                :key="item"
+              <NuxtLink v-for="item in navList" :key="item.name" :to="item.url">
+                <li class="nav-item link-item">
+                  {{ item.name }}
+                </li></NuxtLink
               >
-                {{ item }}
-              </li>
             </ul>
           </li>
           <li>
@@ -102,7 +100,7 @@
 </template>
 <script setup>
 const daytimeLogo = ref(""),
-  nightTimeLogo = "./jjDark.svg";
+  nightTimeLogo = "../jjDark.svg";
 let useWidth = useWindowWidth();
 let isSearch = ref(false);
 function changeIsSearch(state) {
@@ -122,7 +120,7 @@ function logoImg() {
       (darkMode.value && darkMode.value == "true") ||
       localStorage.getItem("useDark")
     ) {
-      daytimeLogo.value = "../jjDark.svg";
+      daytimeLogo.value = nightTimeLogo;
     } else {
       daytimeLogo.value = "../jjLight.svg";
     }
@@ -130,19 +128,11 @@ function logoImg() {
 }
 setTimeout(logoImg, 100);
 
-let navList = [
-  "首页",
-  "沸点",
-  "课程",
-  "直播",
-  "活动",
-  "竞赛",
-  "商城",
-  "APP",
-  "插件",
-];
+const { data } = await useFetch("/api/getNav");
+let navList = data.value.attributes.nav;
+console.log(data.value);
 
-let navShowState = ref(false);
+let navShowState = ref(useWidth.sizeType <= 1 ? true : false);
 function showNav() {
   navShowState.value = !navShowState.value;
 }

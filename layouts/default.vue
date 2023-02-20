@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <Header v-show="useHeaderShow().value"></Header>
     <main>
       <div><slot></slot></div>
     </main>

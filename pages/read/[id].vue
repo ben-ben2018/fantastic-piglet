@@ -2,28 +2,61 @@
   <div class="main-area">
     <div class="article-area">
       <div class="article-main">
-        <Article :attributes="attributes"></Article>
+        <Article :attributes="attributes" @loaded="loadContent"></Article>
         <BookCard></BookCard>
       </div>
       <div class="sidebar">
-        <User></User>
+        <!-- <User></User> -->
+        <Cont :cont="contents" :hs="hs"></Cont>
       </div>
     </div>
   </div>
 </template>
 <script setup>
+// import { debounce } from "~/assets/js/tool";
 const route = useRoute();
 const { data } = await useFetch("/api/getRead/" + route.params.id);
 let attributes = data.value;
-console.log(attributes);
 useHead({
   title: attributes.title,
   meta: [{ name: "description", content: attributes.title }],
   bodyAttrs: {
     class: "test",
   },
-  // script: [{ children: "console.log('Hello world')" }],
+  script: [
+    {
+      children: ``,
+    },
+  ],
 });
+let contents = ref([]);
+let hs = reactive([]);
+let scrollTop = 0;
+function loadContent() {
+  if (process.client && window) {
+    nextTick(() => {
+      hs = [...document.querySelectorAll("[data-h1]")];
+      contents.value = [...hs].map((a) => {
+        return { text: a.innerText };
+      });
+    });
+    let oldScroll = 0;
+    window.onscroll = function () {
+      function check() {
+        scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop < oldScroll || scrollTop == 0) {
+          useHeaderShow().value = true;
+        } else {
+          useHeaderShow().value = false;
+        }
+        oldScroll = scrollTop;
+      }
+      check();
+      // debounce(check, 20);
+    };
+  }
+}
 </script>
 <style scoped>
 .main-area {
@@ -42,7 +75,7 @@ useHead({
 .sidebar {
   width: 23%;
   right: 0;
-  top: 0;
+  top: 0px;
   position: absolute;
 }
 </style>

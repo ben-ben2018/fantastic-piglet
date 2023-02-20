@@ -2,7 +2,7 @@
   <div class="main">
     <div class="main-left">
       <Tags @loadRead="loadRead"></Tags>
-      <Sort @loadSort="loadSort"></Sort>
+      <Sort @loadSort="loadRead"></Sort>
       <EntryList :entryList="entryList || []"></EntryList>
     </div>
     <div class="main-right">
@@ -28,10 +28,11 @@ async function loadRead(tag, page, sort, clear) {
     entryList.value = [];
   }
   return new Promise(async (resolve, reject) => {
-    tag == "/综合" ? (tag = "") : null;
-    let path = `/api/getList${tag}?page=${page ? page : nowPage}&sort=${
-      sort ? sort : nowSort
-    }`;
+    tag = tag || nowTag;
+    tag == "/综合" ? (tag = "") : tag;
+    let path = `/api/getList/?type=${tag.replaceAll("/", "")}&page=${
+      page ? page : nowPage
+    }&sort=${sort ? sort : nowSort}`;
     nowTag = tag;
     nowSort = sort;
     const { data } = await useFetch(path);

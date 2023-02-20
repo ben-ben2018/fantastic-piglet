@@ -1,17 +1,26 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a class="tag" @click="useSort('new')">最新</a>
-      <a class="tag" @click="useSort('hot')">最热</a>
+      <a
+        :class="{ tag: true, active: nowSort == 'new' }"
+        @click="useSort('new')"
+        >最新</a
+      >
+      <a
+        :class="{ tag: true, active: nowSort == 'hot' }"
+        @click="useSort('hot')"
+        >最热</a
+      >
     </div>
   </div>
 </template>
 
 <script setup>
+let nowSort = ref("how");
 let loadEmit = defineEmits(["loadSort"]);
 function useSort(tag) {
-  nowTag.value = tag;
-  loadEmit("loadSort", "/" + tag, 1, true);
+  nowSort.value = tag;
+  loadEmit("loadSort", null, 1, tag, true);
 }
 </script>
 

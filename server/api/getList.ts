@@ -15,18 +15,20 @@ export default defineEventHandler(async (event) => {
 
   let type = "";
   let query = getQuery(event.node.req.originalUrl);
-  if (event.context.params.getList != "getList") {
-    type = decodeURI(
-      event.context.params.getList.split("/").pop().split("?")[0]
-    );
-  }
-  // console.log(event);
+  // if (event.context.params.getList != "getList") {
+  //   type = decodeURI(
+  //     event.context.params.getList.split("/").pop().split("?")[0]
+  //   );
+  // }
+  type = decodeURI(query.type);
+  console.log("query", query);
   let result: Object = {};
   let path =
-    "&sort[0]=hot:desc&pagination[pageSize]=10&" +
+    "&pagination[pageSize]=10&" +
     "pagination[page]=" +
     (query.page || 1) +
-    (type ? "&filters[tag][name][$eq]=" + type : "");
+    (type ? "&filters[tag][name][$eq]=" + type : "") +
+    (query.sort == "hot" ? "&sort[0]=hot:desc" : "");
 
   console.log(path);
   await axios2.find("jj-contents/", path).then((res) => {

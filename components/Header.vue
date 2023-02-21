@@ -9,7 +9,6 @@
           <div class="phone-show-menu isResourceVisible" @click="showNav">
             首页
             <svg
-              t="1675069336150"
               class="icon"
               viewBox="0 0 1024 1024"
               version="1.1"
@@ -20,7 +19,6 @@
             >
               <path
                 d="M735.136 405.28 512 636 288.864 405.28Z"
-                p-id="2027"
                 class="icon"
               ></path>
             </svg>
@@ -37,6 +35,9 @@
               >
                 <li class="nav-item link-item">
                   {{ item.attributes.name }}
+                  <span class="nav-item-icon" v-if="item.attributes.hot">{{
+                    item.attributes.hot
+                  }}</span>
                 </li></NuxtLink
               >
             </ul>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <Header v-show="useHeaderShow().value"></Header>
     <main>
       <div><slot></slot></div>
     </main>
@@ -28,7 +28,6 @@ footer {
   padding-bottom: env(safe-area-inset-bottom);
 }
 main {
-  max-width: 1140px;
   position: relative;
   margin: 0 auto;
   width: 100%;

@@ -2,14 +2,13 @@
   <header>
     <div class="header-content">
       <NuxtLink href="" class="logo">
-        <img :src="daytimeLogo" class="logo-img" />
+        <img :src="daytimeLogo" class="logo-img" />{{ useWidth.sizeType }}
       </NuxtLink>
       <nav class="main-nav">
         <ul class="nav-list">
-          <div class="phone-show-menu isResourceVisible">
+          <div class="phone-show-menu isResourceVisible" @click="showNav">
             首页
             <svg
-              t="1675069336150"
               class="icon"
               viewBox="0 0 1024 1024"
               version="1.1"
@@ -17,19 +16,30 @@
               p-id="2026"
               width="25"
               height="25"
-              :fill="iconColor"
             >
               <path
                 d="M735.136 405.28 512 636 288.864 405.28Z"
-                p-id="2027"
+                class="icon"
               ></path>
             </svg>
           </div>
           <li class="main-nav-list">
-            <ul class="phone-hide isResourceVisible">
-              <li class="nav-item link-item" v-for="item in navList">
-                {{ item }}
-              </li>
+            <ul
+              class="phone-hide isResourceVisible"
+              v-show="navShowState && useWidth.sizeType <= 1"
+            >
+              <NuxtLink
+                v-for="item in navList"
+                :key="item.attributes.name"
+                :to="item.attributes.url"
+              >
+                <li class="nav-item link-item">
+                  {{ item.attributes.name }}
+                  <span class="nav-item-icon" v-if="item.attributes.hot">{{
+                    item.attributes.hot
+                  }}</span>
+                </li></NuxtLink
+              >
             </ul>
           </li>
           <li>
@@ -95,48 +105,53 @@
 </template>
 <script setup>
 const daytimeLogo = ref(""),
-  nightTimeLogo = daytimeLogo;
+  nightTimeLogo = "../jjDark.svg";
 let useWidth = useWindowWidth();
 let isSearch = ref(false);
 function changeIsSearch(state) {
-  console.log(useWidth.value.sizeType);
+  // console.log(useWidth.value.sizeType);
   if (useWidth.value.sizeType != 4) {
     isSearch.value = state;
   }
 }
 function logoImg() {
-  console.log(useWidth.value.sizeType);
+  // console.log(useWidth.value.sizeType);
   if (useWidth.value.sizeType == 4) {
     daytimeLogo.value =
       "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg";
   } else {
-    daytimeLogo.value =
-      "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg";
+    const darkMode = useDarkMode();
+    if (
+      (darkMode.value && darkMode.value == "true") ||
+      localStorage.getItem("useDark")
+    ) {
+      daytimeLogo.value = nightTimeLogo;
+    } else {
+      daytimeLogo.value = "../jjLight.svg";
+    }
   }
 }
 setTimeout(logoImg, 100);
 
-let navList = [
-  "首页",
-  "沸点",
-  "课程",
-  "直播",
-  "活动",
-  "竞赛",
-  "商城",
-  "APP",
-  "插件",
-];
-let iconColor = ref("black");
+const { data } = await useFetch("/api/getNav");
+let navList = data.value;
+// console.log(data.value);
+let navShowState = ref(useWidth.value.sizeType < 1 ? true : false);
+function showNav() {
+  navShowState.value = !navShowState.value;
+}
+
 function changeTheme() {
-  const darkMode = useDarkMode();
   if (process.client) {
     let currentTheme = document.body.getAttribute("data-theme");
     if (currentTheme == "dark") {
       document.body.setAttribute("data-theme", "light");
+      localStorage.setItem("useDark", "");
+      daytimeLogo.value = "../jjLight.svg";
     } else {
       document.body.setAttribute("data-theme", "dark");
-      iconColor.value = "white";
+      localStorage.setItem("useDark", "1");
+      daytimeLogo.value = "../jjDark.svg";
     }
   }
 }

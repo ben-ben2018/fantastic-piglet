@@ -1,0 +1,35 @@
+.active {
+  background-color: var(--main);
+  color: white !important;
+}
+.tagNav {
+  width: 100%;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--grayBorderBottom);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tagsList {
+  display: flex;
+  overflow: auto;
+  height: 3.833rem;
+}
+.tag {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 1.16rem;
+  color: #71777c;
+  padding: 0 1rem;
+}
+.setting {
+  font-size: 1.16rem;
+  padding: 0 1rem;
+}
+
+.tag:hover {
+  color: var(--main);
+}

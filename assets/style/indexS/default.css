@@ -67,18 +67,7 @@ header .nav-item {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  position: relative;
   /* border: 2px solid var(--navBorder); */
-}
-.nav-item-icon {
-  position: absolute;
-  background-color: red;
-  color: white;
-  top: 0;
-  right: 0;
-  font-size: 12px;
-  padding: 1px 5px;
-  border-radius: 10px;
 }
 header .route-active {
   color: var(--main);
@@ -92,11 +81,6 @@ header .search-add-ul {
   display: flex;
   justify-content: flex-start;
 }
-
-.icon {
-  fill: var(--font-3);
-}
-
 .search-form {
   background-color: var(--bg);
   display: flex;

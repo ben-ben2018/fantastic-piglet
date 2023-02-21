@@ -30,16 +30,19 @@ function getSizeType() {
     size = 0;
   }
   useWidth.value.sizeType = size;
-  console.log(useWidth.value);
   return size;
 }
 
 const darkMode = useDarkMode();
+
 if (process.client) {
-  if (darkMode.value) {
-    document.body.setAttribute("data-theme", "light");
-  } else {
+  if (
+    (darkMode.value && darkMode.value == "true") ||
+    localStorage.getItem("useDark")
+  ) {
     document.body.setAttribute("data-theme", "dark");
+  } else {
+    document.body.setAttribute("data-theme", "light");
   }
 }
 </script>

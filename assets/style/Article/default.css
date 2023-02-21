@@ -1,0 +1,92 @@
+.article-box {
+  background-color: var(--articleBg);
+}
+.article {
+  padding: 1.5rem;
+}
+.article-title {
+  margin: 0 0 1.667rem;
+  font-size: 2.667rem;
+  font-weight: 600;
+  line-height: 1.31;
+  color: var(--font-1);
+}
+.author-info-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.667rem;
+}
+.avatar {
+  margin-right: 1rem;
+  width: 3.333rem;
+  height: 3.333rem;
+  border-radius: 50%;
+}
+.author-info-box {
+  min-width: 0;
+  flex: 1;
+  min-height: 43px;
+}
+.author-info-block .author-name {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  color: var(--font-1);
+}
+.meta-box {
+  font-size: 1.167rem;
+  color: var(--font-3);
+  margin-top: 2px;
+  line-height: 22px;
+}
+
+.article-end {
+  padding-top: 10px;
+  border-radius: 0 0 4px 4px;
+  padding-bottom: 3.33rem;
+}
+.tag-list-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: -12px;
+}
+.tag-list {
+  display: flex;
+  font-size: 1.167rem;
+  line-height: 2.286;
+}
+.tag-list-box .tag-list .tag-list-title {
+  flex-shrink: 0;
+  margin-right: 8px;
+  font-size: 14px;
+  color: var(--font-1);
+}
+.tag-list-box .tag-list .item {
+  display: flex;
+  align-items: center;
+  margin: 0 0.667rem 1rem 0;
+  padding: 0 1rem;
+  border-radius: 4px;
+  transition: background-color 0.15s linear;
+}
+.tag-list-box .tag-list .item.category-item {
+  background-color: var(--bg);
+  color: var(--font-3);
+}
+.tag-list-box .tag-list .tag-title {
+  white-space: nowrap;
+  line-height: 2.667rem;
+}
+.tag-list-box .tag-list .tag-list-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag-list-box .tag-list .item.tag-item {
+  background-color: var(--bg);
+  color: #1e80ff;
+}
+.articleBody,
+.markdown-body {
+  color: var(--font-1);
+}

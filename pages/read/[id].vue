@@ -22,11 +22,12 @@ const { data } = await useFetch(
   "/api/getRead/?id=" + route.path.split("/").pop()
 );
 let attributes = data.value;
-console.log(attributes, attributes.title);
+// console.log(attributes.tags.join(","));
 useHead({
   title: attributes.title,
   meta: [
     { name: "description", content: attributes.title },
+    { name: "keywords", content: attributes.tags.join(",") },
     { name: "renderer", content: "webkit" },
     { name: "force-rendering", content: "webkit" },
     {
@@ -73,6 +74,7 @@ function loadContent() {
 }
 </script>
 <style scoped>
+@import url(~/assets/style/read/phone.css);
 .main-area {
   display: flex;
 }

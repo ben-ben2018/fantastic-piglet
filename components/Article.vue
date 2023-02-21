@@ -53,7 +53,7 @@ const props = defineProps({
   attributes: Object,
 });
 let info = props.attributes;
-console.log(info);
+// console.log(info);
 let userinfo = info.author;
 let instyle = ref("");
 let md = new MarkdownIt();

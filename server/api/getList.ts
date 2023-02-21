@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   //   );
   // }
   type = decodeURI(query.type);
-  console.log("query", query);
+  // console.log("query", query);
   let result: Object = {};
   let path =
     "&pagination[pageSize]=10&" +
@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
     (type ? "&filters[tag][name][$eq]=" + type : "") +
     (query.sort == "hot" ? "&sort[0]=hot:desc" : "");
 
-  console.log(path);
+  // console.log(path);
   await axios2.find("jj-contents/", path).then((res) => {
     result = res.data.data;
   });

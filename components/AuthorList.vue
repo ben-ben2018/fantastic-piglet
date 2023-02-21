@@ -1,12 +1,12 @@
 <template>
   <div class="author-list">
     <div class="title">作者榜</div>
-    <div class="author-info" v-for="author in authors">
+    <div class="author-info" v-for="author in data">
       <div class="avatar">
-        <img :src="author.avatar" alt="" />
+        <img :src="baseUrl + author.avatar_large2.data.attributes.url" alt="" />
       </div>
       <div class="info">
-        <div class="user-name">{{ author.name }}</div>
+        <div class="user-name">{{ author.user_name }}</div>
         <div class="user-position">{{ author.position }}</div>
       </div>
     </div>
@@ -58,6 +58,8 @@
 }
 </style>
 <script setup>
+const { data } = await useFetch("/api/getAuthor");
+console.log(data.value);
 let authors = [
   {
     avatar:

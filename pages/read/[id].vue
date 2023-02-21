@@ -7,7 +7,10 @@
       </div>
       <div class="sidebar">
         <!-- <User></User> -->
-        <Cont :cont="contents" :hs="hs"></Cont>
+        <div class="fixed-bar">
+          <Cont :cont="contents" :hs="hs"></Cont>
+          <SameList></SameList>
+        </div>
       </div>
     </div>
   </div>
@@ -19,19 +22,27 @@ const { data } = await useFetch(
   "/api/getRead/?id=" + route.path.split("/").pop()
 );
 let attributes = data.value;
-// console.log(attributes);
-// useHead({
-//   title: attributes.title,
-//   meta: [{ name: "description", content: attributes.title }],
-//   bodyAttrs: {
-//     class: "test",
-//   },
-//   script: [
-//     {
-//       children: ``,
-//     },
-//   ],
-// });
+console.log(attributes, attributes.title);
+useHead({
+  title: attributes.title,
+  meta: [
+    { name: "description", content: attributes.title },
+    { name: "renderer", content: "webkit" },
+    { name: "force-rendering", content: "webkit" },
+    {
+      "http-equiv": "X-UA-Compatible",
+      content: "IE=Edge,chrome=1",
+    },
+  ],
+  bodyAttrs: {
+    // class: "test",
+  },
+  script: [
+    {
+      // children: `console.log(666)`,
+    },
+  ],
+});
 let contents = ref([]);
 let hs = reactive([]);
 let scrollTop = 0;
@@ -80,5 +91,12 @@ function loadContent() {
   right: 0;
   top: 0px;
   position: absolute;
+}
+.fixed-bar {
+  position: fixed;
+  width: 20%;
+  height: calc(100vh - 80px);
+  overflow: auto;
+  background-color: var(--htmlbg);
 }
 </style>

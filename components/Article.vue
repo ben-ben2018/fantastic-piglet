@@ -38,7 +38,7 @@
           <div class="tag-list-title">标签：</div>
           <div class="tag-list-container">
             <NuxtLink class="item tag-item" v-for="item in article.tag.tags">
-              <span class="tag-title">{{ item.name }}</span>
+              <span class="tag-title">{{ item }}</span>
             </NuxtLink>
           </div>
         </div>
@@ -53,6 +53,7 @@ const props = defineProps({
   attributes: Object,
 });
 let info = props.attributes;
+console.log(info);
 let userinfo = info.author;
 let instyle = ref("");
 let md = new MarkdownIt();
@@ -61,7 +62,10 @@ let article = {
     name: userinfo.user_name,
     avatar: baseUrl + userinfo.avatar_large2.data.attributes.url,
   },
-  tag: { type: { name: info.type, url: "" }, tags: [{ name: "", url: "" }] },
+  tag: {
+    type: { name: info.tag.data.attributes.name, url: "" },
+    tags: info.tags,
+  },
   article: {
     md: info.content,
     title: info.title,

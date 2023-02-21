@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content-box">
     <div v-for="(c, index) in props.hs" class="line">
       <span @click="hideHeader(index)">{{ c.innerText }}</span>
     </div>
@@ -19,10 +19,8 @@ function hideHeader(index) {
 </script>
 
 <style scoped>
-.content {
-  position: fixed;
+.content-box {
   background-color: var(--articleBg);
-  width: 20%;
 }
 .line {
   line-height: 28px;

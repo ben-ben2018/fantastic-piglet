@@ -26,7 +26,10 @@
           <li class="main-nav-list">
             <ul
               class="phone-hide isResourceVisible"
-              v-show="navShowState && useWidth.sizeType <= 1"
+              v-show="
+                (navShowState && useWidth.sizeType >= 1) ||
+                useWidth.sizeType == 0
+              "
             >
               <NuxtLink
                 v-for="item in navList"

@@ -63,6 +63,28 @@ if (process.client && window) {
     }
   };
 }
+
+useHead({
+  title: "稀土掘金",
+  meta: [
+    { name: "description", content: "稀土掘金" },
+    { name: "keywords", content: "稀,土,掘,金" },
+    { name: "renderer", content: "webkit" },
+    { name: "force-rendering", content: "webkit" },
+    {
+      "http-equiv": "X-UA-Compatible",
+      content: "IE=Edge,chrome=1",
+    },
+  ],
+  bodyAttrs: {
+    // class: "test",
+  },
+  script: [
+    {
+      // children: `console.log(666)`,
+    },
+  ],
+});
 </script>
 
 <style scoped>

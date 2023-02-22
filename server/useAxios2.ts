@@ -9,7 +9,6 @@ axios.interceptors.request.use(
   }
 );
 
-// 添加响应拦截器
 axios.interceptors.response.use(
   function (response: any) {
     return response;

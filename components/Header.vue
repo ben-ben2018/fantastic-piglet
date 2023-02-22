@@ -2,7 +2,7 @@
   <header>
     <div class="header-content">
       <NuxtLink href="" class="logo">
-        <img :src="daytimeLogo" class="logo-img" />{{ useWidth.sizeType }}
+        <img :src="daytimeLogo" class="logo-img" />
       </NuxtLink>
       <nav class="main-nav">
         <ul class="nav-list">
@@ -82,12 +82,12 @@
                 </div>
               </li>
               <li>
-                <div class="avatar-content" @click="changeTheme">
-                  <img
-                    src="https://p3-passport.byteimg.com/img/mosaic-legacy/3797/2889309425~100x100.awebp"
-                    alt=""
-                    class="avatar"
-                  />
+                <div
+                  class="avatar-content"
+                  @click="changeTheme"
+                  style="font-size: 25px"
+                >
+                  🌞
                 </div>
               </li>
               <li v-show="useWidth.sizeType != 4">

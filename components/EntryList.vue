@@ -26,7 +26,7 @@
           <img
             v-if="entry.attributes.img"
             :src="entry.attributes.img"
-            alt=""
+            :alt="entry.attributes.img"
             srcset=""
             class="thumb"
           />

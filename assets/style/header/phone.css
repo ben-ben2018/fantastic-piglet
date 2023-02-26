@@ -62,4 +62,10 @@
   header .nav-list {
     justify-content: flex-end !important;
   }
+  .search-form {
+    width: calc(100vw - 180px);
+  }
+  .logo {
+    margin-left: 5px !important;
+  }
 }

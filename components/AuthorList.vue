@@ -3,7 +3,10 @@
     <div class="title">作者榜</div>
     <div class="author-info" v-for="author in data">
       <div class="avatar">
-        <img :src="baseUrl + author.avatar_large2.data.attributes.url" alt="" />
+        <img
+          :src="baseUrl + author.avatar_large2.data.attributes.url"
+          :alt="'作者：' + author.user_name"
+        />
       </div>
       <div class="info">
         <div class="user-name">{{ author.user_name }}</div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "http://127.0.0.1:1337/api/";
+const baseUrl = "http://localhost:1337/api/";
 axios.interceptors.request.use(
   function (config: any) {
     return config;

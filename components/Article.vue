@@ -3,7 +3,11 @@
     <div class="article">
       <h1 class="article-title">{{ article.article.title }}</h1>
       <div class="author-info-block">
-        <img :src="article.author.avatar" alt="" class="avatar" />
+        <img
+          :src="article.author.avatar"
+          :alt="article.article.title"
+          class="avatar"
+        />
         <div class="author-info-box">
           <div class="author-name">
             <span class="name" style="max-width: 128px">
@@ -109,6 +113,27 @@ if (markdown) {
 let result = md.render(markdown);
 let loadEmit = defineEmits(["loaded"]);
 loadEmit("loaded", "");
+if (process.client) {
+  document.addEventListener("copy", function (event) {
+    let clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) {
+      return;
+    }
+    let text = window.getSelection().toString();
+    if (text) {
+      event.preventDefault();
+      clipboardData.setData(
+        "text/plain",
+        text +
+          `\n\n-----------
+          作者：${userinfo.user_name}
+          链接：${location.href}
+          来源：稀土掘金
+          著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。`
+      );
+    }
+  });
+}
 </script>
 <style scoped>
 @import url(~/assets/style/Article/default.css);

@@ -2,7 +2,7 @@
   <header>
     <div class="header-content">
       <NuxtLink href="" class="logo">
-        <img :src="daytimeLogo" class="logo-img" />
+        <img :src="daytimeLogo" class="logo-img" alt="logo" />
       </NuxtLink>
       <nav class="main-nav">
         <ul class="nav-list">
@@ -65,7 +65,7 @@
                   <div class="search-btn">
                     <img
                       src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/1e8ab9a22f0ddc36349f60b38900d0bd.svg"
-                      alt=""
+                      alt="search"
                       class="search-icon"
                     />
                   </div>
@@ -94,7 +94,7 @@
                 <div class="avatar-content">
                   <img
                     src="https://p3-passport.byteimg.com/img/mosaic-legacy/3797/2889309425~100x100.awebp"
-                    alt=""
+                    alt="avatar"
                     class="avatar"
                   />
                 </div>

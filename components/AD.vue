@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <img :src="adSrc" alt="" srcset="" />
+    <img :src="adSrc" :alt="'广告：' + adSrc" srcset="" />
     <div class="banner-icon">广告</div>
   </div>
 </template>

@@ -19,6 +19,7 @@ html {
 }
 body {
   background-color: var(--htmlBg);
+  overflow-x: hidden;
 }
 li {
   list-style: none;

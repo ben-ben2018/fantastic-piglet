@@ -61,6 +61,50 @@ let info = props.attributes;
 let userinfo = info.author;
 let instyle = ref("");
 let md = new MarkdownIt();
+md.block.ruler.before(
+  "paragraph",
+  "myplugin",
+  function (state, startLine, endLine) {
+    let ch,
+      level,
+      tmp,
+      token,
+      pos = state.bMarks[startLine] + state.tShift[startLine],
+      max = state.eMarks[startLine];
+    ch = state.src.charCodeAt(pos);
+
+    if (ch !== 0x40 /*@*/ || pos >= max) {
+      return false;
+    }
+
+    let text = state.src.substring(pos, max);
+    let rg = /^\@jcode\((.*)\)/;
+    let match = text.match(rg);
+
+    if (match && match.length) {
+      let result = match[1];
+      token = state.push("heading_open", "iframe", 1);
+      token.markup = "@";
+      token.map = [startLine, state.line];
+      token.attrSet("src", result);
+      token.attrSet("class", "jcode");
+      token = state.push("inline", "", 0);
+      console.log(ch, token);
+
+      // token.content = result;
+      token.map = [startLine, state.line];
+      token.children = [];
+
+      token = state.push("heading_close", "iframe", -1);
+      token.markup = "@";
+
+      state.line = startLine + 1;
+
+      return true;
+    }
+  }
+);
+
 let article = {
   author: {
     name: userinfo.user_name,
@@ -102,11 +146,27 @@ function loadTheme(theme) {
   instyle.value = themeList[theme];
 }
 let markdown = article.article.md;
+let otherRelus = [
+  {
+    relu: /\<\!\-\-(.*?)theme:(.*?)\-\-\>/,
+    fn: loadTheme,
+    attr: 2,
+    handle: ["trim"],
+  },
+  // {
+  //   relu: /\[jcode\]\((.*?)\)/,
+  //   fn: loadTheme,
+  //   attr: 2,
+  //   handle: ["trim"],
+  // },
+];
 if (markdown) {
-  let theme = markdown.match(/\<\!\-\-(.*?)\-\-\>/);
-  if (theme) {
-    let token = theme[1].trim().split(":");
-    token[0] == "theme" ? loadTheme(token[1]) : null;
+  for (let rule of otherRelus) {
+    let token = markdown.match(rule.relu);
+    if (!token) {
+      continue;
+    }
+    rule.fn(token[rule.attr][rule.handle]());
   }
 }
 

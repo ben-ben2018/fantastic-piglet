@@ -1,9 +1,9 @@
 <template>
   <header>
     <div class="header-content">
-      <NuxtLink href="" class="logo">
+      <span class="logo">
         <img :src="daytimeLogo" class="logo-img" alt="logo" />
-      </NuxtLink>
+      </span>
       <nav class="main-nav">
         <ul class="nav-list">
           <div class="phone-show-menu isResourceVisible" @click="showNav">

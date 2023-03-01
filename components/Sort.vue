@@ -1,16 +1,16 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a
+      <span
         :class="{ tag: true, active: nowSort == 'new' }"
         @click="useSort('new')"
-        >最新</a
-      >
-      <a
+        >最新
+      </span>
+      <span
         :class="{ tag: true, active: nowSort == 'hot' }"
         @click="useSort('hot')"
-        >最热</a
-      >
+        >最热
+      </span>
     </div>
   </div>
 </template>

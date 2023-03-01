@@ -1,11 +1,11 @@
 <template>
   <div class="tagNav">
     <div class="tagsList">
-      <a
+      <span
         v-for="tag in tags"
         :class="{ tag: true, active: tag.attributes.name == nowTag }"
         @click="useTag(tag.attributes.name)"
-        >{{ tag.attributes.name }}</a
+        >{{ tag.attributes.name }}</span
       >
     </div>
     <!-- <div class="setting">管理</div> -->

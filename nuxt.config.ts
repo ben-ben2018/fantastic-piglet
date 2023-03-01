@@ -9,6 +9,9 @@ export default defineNuxtConfig({
         // <meta name="description" content="My amazing site">
         { name: "description", content: "My amazing site." },
       ],
+      htmlAttrs: {
+        lang: "zn",
+      },
     },
   },
 });

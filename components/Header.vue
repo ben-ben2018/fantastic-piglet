@@ -151,10 +151,12 @@ function changeTheme() {
       document.body.setAttribute("data-theme", "light");
       localStorage.setItem("useDark", "");
       daytimeLogo.value = "../jjLight.svg";
+      logoImg();
     } else {
       document.body.setAttribute("data-theme", "dark");
       localStorage.setItem("useDark", "1");
       daytimeLogo.value = "../jjDark.svg";
+      logoImg();
     }
   }
 }

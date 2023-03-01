@@ -1,7 +1,7 @@
 <template>
   <div class="same-list">
     <div class="line-title">
-      <span>推荐阅读</span>
+      <span>{{ props.type }}推荐阅读</span>
     </div>
     <NuxtLink v-for="(c, index) in data" :key="index" :to="'/read/' + c.id">
       <div class="line">
@@ -11,7 +11,11 @@
   </div>
 </template>
 <script setup>
-let path = `/api/getList/?type=前端&page=1&sort=hot`;
+const props = defineProps({
+  type: String,
+});
+console.log(props);
+let path = `/api/getList/?type=${props.type}&page=1&sort=hot`;
 const { data } = await useFetch(path);
 let sameLists = [];
 </script>

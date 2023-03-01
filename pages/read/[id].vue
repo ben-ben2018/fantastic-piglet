@@ -9,7 +9,7 @@
         <!-- <User></User> -->
         <div class="fixed-bar">
           <Cont :cont="contents" :hs="hs"></Cont>
-          <SameList></SameList>
+          <SameList :type="attributes.tag.data.attributes.name"></SameList>
         </div>
       </div>
     </div>
@@ -22,7 +22,6 @@ const { data } = await useFetch(
   "/api/getRead/?id=" + route.path.split("/").pop()
 );
 let attributes = data.value;
-// console.log(attributes.tags.join(","));
 useHead({
   title: attributes.title,
   meta: [

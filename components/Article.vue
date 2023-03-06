@@ -16,7 +16,7 @@
           </div>
           <div class="meta-box">
             <time :datetime="article.article.time" class="time">
-              {{ article.article.time }}
+              {{ timeFormat(article.article.time) }}
             </time>
             <span class="views-count">
               ·&nbsp;&nbsp;阅读 {{ article.article.views }}
@@ -193,6 +193,37 @@ if (process.client) {
       );
     }
   });
+}
+
+function timeFormat(t) {
+  let d = new Date(t),
+    current = new Date();
+  let leave = (current.getTime() - d.getTime()) / 86400000,
+    leaveInt = parseInt(leave);
+  console.log(leave);
+  if (leave <= 0) {
+    return "一天内";
+  }
+  if (leave == 7) {
+    return "一周前";
+  }
+  if (leave < 7) {
+    leave == leaveInt ? null : (leave = leaveInt + 1);
+    leave += "天前";
+  } else {
+    leave = getNowFormatDate(t);
+  }
+  return leave;
+}
+
+function getNowFormatDate(t) {
+  let date = t ? new Date(t) : new Date(),
+    year = date.getFullYear(),
+    month = date.getMonth() + 1,
+    strDate = date.getDate();
+  if (month < 10) month = `0${month}`;
+  if (strDate < 10) strDate = `0${strDate}`;
+  return `${year}-${month}-${strDate}`;
 }
 </script>
 <style scoped>
